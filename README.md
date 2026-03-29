@@ -1,27 +1,38 @@
 
-# Autonomous Delivery Agent - Project Package
-This package contains a working Python implementation of path planners for a 2D grid environment, with BFS, Uniform-Cost Search (UCS), A* (Manhattan heuristic), and a simple local search (simulated annealing) based replanning strategy for dynamic obstacles.
+# Autonomous-Delivery-Agent
+Implementation of autonomous delivery agent using BFS/UCS, A*, and simulated annealing for dynamic grid navigation
+# CSA2001: Autonomous Delivery Agent
 
-# Structure
-- src/ : Python source code (planner implementations, simulator, utilities)
-- maps/ : Grid map files (small, medium, large, dynamic)
-- report/ : Report template (report.md)
-- demo/ : Example screenshots placeholder
-- results/ : Example experimental outputs (CSV)
-- run_examples.sh : Example run commands
-# Requirements
-- Python 3.8+
-- No external dependencies (only Python standard library)
-# Quick start (examples)
-- Run the example runner which executes planners on all maps and produces CSV results:
+## Overview
+This project implements a rational autonomous delivery agent navigating a 2D grid with static/dynamic obstacles and varying terrain costs. Uses UCS, A*, and simulated annealing for pathfinding.
 
-python src/runner.py
-- To run a single planner:
+## Environment Model
+- 2D grid with costs ≥1 (0=obstacle).
+- 4-connected movement (up/down/left/right).
+- Dynamic obstacles simulated via replanning (unpredictable appearance).
 
-python src/cli.py --map maps/small.map --planner astar --start 0 0 --goal 9 9
-- For dynamic replanning demo:
+## Installation & Dependencies
+- Python 3.8+ (tested on 3.12).
+- No external deps: `pip install -r requirements.txt` (empty file).
+- Reproducibility: `random.seed(42)` in code.
 
-python src/simulate_dynamic.py --map maps/dynamic.map --planner ucs
-# Notes
-- Map format: text file with rows of integers separated by spaces. 0 = free cell cost 1, # = obstacle (impassable). Any integer >=1 denotes movement cost for that cell.
-- Dynamic map includes a JSON schedule file maps/dynamic_schedule.json describing moving obstacles by time steps.
+## Running the Planners
+1. Clone repo: `git clone https://github.com/yourusername/CSA2001-Autonomous-Delivery-Agent.git`
+2. Run CLI: `python agent.py`
+- Outputs: Path cost, length, nodes expanded, time for each map/planner.
+- Maps: small_map.txt, medium_map.txt, large_map.txt, dynamic_map.txt.
+
+## Tests & Reproducibility
+- Built-in: Code validates paths (adjacency, no obstacles).
+- Dynamic POC: Run shows initial A* path, obstacle block at step 3, SA replan log.
+- Seed: 42 ensures same random obstacles/paths.
+
+## Report & Demo
+- See `report.pdf` for model, design, heuristics, results (tables/plots), analysis.
+- Demo: `demo_screenshots/` folder with sequence (initial plan → block → replan).
+
+## Grid File Format
+First line: `rows cols start_r start_c goal_r goal_c`
+Subsequent lines: Space-separated costs per row.
+# Autonomous-Delivery-Agent
+This project implements a rational autonomous delivery agent navigating a 2D grid with static/dynamic obstacles and varying terrain costs. Uses UCS, A*, and simulated annealing for pathfinding.
