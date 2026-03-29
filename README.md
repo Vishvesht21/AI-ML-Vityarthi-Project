@@ -2,14 +2,14 @@
 Autonomous Delivery Agent - Project Package
 This package contains a working Python implementation of path planners for a 2D grid environment, with BFS, Uniform-Cost Search (UCS), A* (Manhattan heuristic), and a simple local search (simulated annealing) based replanning strategy for dynamic obstacles.
 
-Structure
+#Structure
 src/ : Python source code (planner implementations, simulator, utilities)
 maps/: Grid map files (small, medium, large, dynamic)
 report/: Report template (report.md)
 demo/: Example screenshots placeholder
 results/: Example experimental outputs (CSV)
 run_examples.sh: Example run commands
-Requirements
+#Requirements
 Python 3.8+
 No external dependencies (only Python standard library)
 Quick start (examples)
